@@ -17,7 +17,7 @@ test.cb('validar endpoint', (t) => {
     // When the user send data JSON
     request(app)
         .post('/DevOps')
-        //.set('auth', '2f5ae96c-b558-4c7b-a590-a501ae1c3f6c')
+        .set('auth', '2f5ae96c-b558-4c7b-a590-a501ae1c3f6c')
         .send(dataJson)
         .expect('Content-Type', /json/)
         .expect(200)
