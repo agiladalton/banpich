@@ -17,10 +17,20 @@ test.cb('validar endpoint', (t) => {
     // When the user send data JSON
     request(app)
         .post('/DevOps')
+        //.set('auth', '2f5ae96c-b558-4c7b-a590-a501ae1c3f6c')
+        .send(dataJson)
         .expect('Content-Type', /json/)
         .expect(200)
         .end((err, res) => {
-            t.falsy(err, 'No deberia salir error')
-            t.end() 
+            //expect(response.body).toEqual({message : 'Hello ' + dataJson.to + ' your message will be send' })
+
+            //Then he endPoint must be returned this result: {“message” : “Hello Juan Perez your message will be send” }
+            //Other HTTP Methods calls must returns string ERROR
+            t.falsy(err, res.body.mensaje)
+
+            t.deepEqual(res.body.message, 'Hello Juan Perez your message will be send')
+
+            t.end()
+            
         })
 })
